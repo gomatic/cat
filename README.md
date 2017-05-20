@@ -1,2 +1,3 @@
-# head
-Compression-aware head CLI
+# cat
+
+Compression and URI aware `cat`.

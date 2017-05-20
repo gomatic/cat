@@ -11,8 +11,8 @@ import (
 
 //
 type application struct {
-	bytes, lines                         int64
-	silent, verbose, null, follow, watch bool
+	bytes, lines                                                int64
+	number, visible, tabs, silent, verbose, null, follow, watch bool
 }
 
 //
@@ -30,8 +30,8 @@ var settings application
 //
 func main() {
 	app := cli.NewApp()
-	app.Name = "head"
-	app.Usage = "Print the first N lines of each FILE to standard output."
+	app.Name = "cat"
+	app.Usage = "Print lines of each FILE to standard output."
 	app.Version = build.Version.String()
 	app.EnableBashCompletion = true
 
@@ -42,10 +42,25 @@ func main() {
 			Destination: &settings.bytes,
 		},
 		cli.Int64Flag{
-			Name:        "n, lines",
+			Name:        "l, lines",
 			Usage:       "Print the first NUM lines of each file.",
 			Value:       10,
 			Destination: &settings.lines,
+		},
+		cli.BoolFlag{
+			Name:        "n, number",
+			Usage:       "Number the lines.",
+			Destination: &settings.number,
+		},
+		cli.BoolFlag{
+			Name:        "t, tabs",
+			Usage:       "Display tab characters as `^I`.",
+			Destination: &settings.tabs,
+		},
+		cli.BoolFlag{
+			Name:        "v, visible",
+			Usage:       "Display non-printing characters so they are visible.",
+			Destination: &settings.visible,
 		},
 		cli.BoolFlag{
 			Name:        "q, quiet, silent",
