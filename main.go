@@ -44,6 +44,7 @@ func main() {
 		cli.Int64Flag{
 			Name:        "n, lines",
 			Usage:       "Print the first NUM lines of each file.",
+			Value:       10,
 			Destination: &settings.lines,
 		},
 		cli.BoolFlag{
