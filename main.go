@@ -62,12 +62,12 @@ func main() {
 			Destination: &settings.null,
 		},
 		cli.BoolFlag{
-			Name:        "f",
+			Name:        "f, follow",
 			Usage:       "Follow.",
 			Destination: &settings.follow,
 		},
 		cli.BoolFlag{
-			Name:        "F",
+			Name:        "F, watch",
 			Usage:       "Follow across new files.",
 			Destination: &settings.watch,
 		},
