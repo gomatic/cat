@@ -32,7 +32,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "head"
 	app.Usage = "Print the first N lines of each FILE to standard output."
-	app.Version = build.Version.Detailed()
+	app.Version = build.Version.String()
 	app.EnableBashCompletion = true
 
 	app.Flags = []cli.Flag{
@@ -63,14 +63,17 @@ func main() {
 		},
 		cli.BoolFlag{
 			Name:        "f",
+			Usage:       "Follow.",
 			Destination: &settings.follow,
 		},
 		cli.BoolFlag{
 			Name:        "F",
+			Usage:       "Follow across new files.",
 			Destination: &settings.watch,
 		},
 	}
 
+	app.Action = run
 	app.Run(os.Args)
 }
 
